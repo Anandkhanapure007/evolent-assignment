@@ -1,0 +1,31 @@
+body {
+    background-color: #eee;
+}
+
+*[role="form"] {
+    border: 10px solid #f1f1f1;
+    max-width: 700px;
+    margin: 11px auto;
+    background-color: #fff;
+    border-radius: 0.3em;
+ 
+}
+
+*[role="form"] h3 {
+    margin-left: 10em;
+    margin-top: 5px;
+    font-style: Bold;
+}
+.form-horizontal .form-group{
+  margin-right: 1px;
+    margin-left: -15px;
+}
+
+@media screen and (max-width: 600px) {
+    .col-25, .col-75, input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
+}
+
+

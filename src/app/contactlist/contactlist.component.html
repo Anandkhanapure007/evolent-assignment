@@ -1,0 +1,172 @@
+
+<div class="container">
+<div style="padding-top: 17px; padding-bottom: 19px;    padding-left: 1032px;">
+<button class="btn btn-md btn-primary"  (click)="addcontact(template2)">Add Contact</button><br>
+</div>
+<div  class="section panel panel-primary">
+<div class="panel-heading" style="text-align: center;"> Contact List Summary</div>
+
+<table class="table table table-bordered">
+<thead>
+<tr>
+<th>FirstName</th>
+<th>LastName</th>
+<th>Email</th>
+<th>PhoneNumber</th>
+<th>Status</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody *ngFor="let item of contactList">
+<tr>
+<td>{{item.firstName}}</td>
+<td>{{item.lastName}}</td>
+<td>{{item.email}}</td>
+<td>{{item.mobileNumber}}</td>
+<td>{{item.status}}</td>
+<td><button class="btn btn-xs btn-primary"  (click)="openModal(template,item.id)">Update</button></td>
+<td><button class="btn btn-xs btn-primary"(click)="deleteContact(template1,item.id)">Delete</button></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<!--PopUp code -->
+<!--Add PopUp-->
+<ng-template #template2>
+<div class="modal-content" style="width: 586px;">
+   <form class="form-horizontal" [formGroup]="form"> 
+                <h3 style="text-align: center;"><b>Add Contact</b></h3>
+                <div class="form-group">
+                    <label for="firstName" class="col-sm-3 control-label">First Name</label>
+                    <div class="col-sm-9">
+                        <input type="text"  placeholder="First Name"   class="form-control"  formControlName="firstName"  required>
+                          <div *ngIf="form.get('firstName')?.touched && form.get('firstName').invalid" class="alert alert-danger" style="padding: 5px;">FirstName Required</div> 
+                    </div>
+                </div>
+                  <div class="form-group">
+                    <label for="lastName" class="col-sm-3 control-label">Last Name</label>
+                    <div class="col-sm-9">
+                        <input type="text"  placeholder="Last Name"  class="form-control" formControlName="lastName" required>
+                          <div *ngIf="form.get('lastName')?.touched && form.get('lastName').invalid" class="alert alert-danger">LastName Required</div> 
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label for="email" class="col-sm-3 control-label">Email</label>
+                    <div class="col-sm-9">
+                        <input type="email" id="email" placeholder="Email"  class="form-control" formControlName="email" required>
+                          <div *ngIf="form.get('email')?.touched && form.get('email').invalid" class="alert alert-danger">Email Id Required</div> 
+                    </div>
+                </div>
+                  <div class="form-group">
+                    <label for="mobileno" class="col-sm-3 control-label">Mobile Number</label>
+                    <div class="col-sm-9">
+                        <input type="text"  placeholder="Mobile No"  class="form-control" formControlName="mobileNumber"  required>
+                           <div *ngIf="form.get('mobileNumber')?.touched && form.get('mobileNumber').invalid" class="alert alert-danger">
+                              <div *ngIf="form.get('mobileNumber').errors.required" >Mobile number required</div> 
+                              <div *ngIf="form.get('mobileNumber').errors.minlength" >Mobile number should be 10 digit</div>  
+                             <div *ngIf="form.get('mobileNumber').errors.maxlength" >Mobile number should not greater 10 digit</div>     
+                            </div>  
+              
+                        </div>
+                </div>
+               
+             <div class="form-group">
+              <label class="control-label col-sm-3">Status</label>
+               <div class="col-sm-6">
+              <div class="row">
+               <div class="col-sm-4">
+                 <label class="radio-inline">
+                  <input type="radio" id="ActiveRadio" formControlName="status" value="Active">Active
+               </label>
+              </div>
+                 <div class="col-sm-4">
+                  <label class="radio-inline">
+                  <input type="radio" id="InActiveRadio" formControlName="status"  value="InActive">InActive
+                 </label>
+                </div>
+              </div>
+            </div>
+              </div> 
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <input type="submit" class="btn btn-primary btn-block" value="Submit" (click)="AddContact(form.value)">
+                         <!-- <button type="submit" class="btn btn-primary btn-block" value="Submit" [disabled]="form.invalid" >Submit</button>  -->
+                    </div>
+                </div>
+        </form> 
+</div>
+      
+</ng-template>
+<!--for Update POP-UP Contact Code here-->
+<ng-template #template>
+
+<div class="modal-content" style="width: 586px;">
+   <form class="form-horizontal" [formGroup]="form" > 
+                <h3 style="text-align:center;"><b>update Contact</b></h3>
+                
+                <div class="form-group">
+                  <div class="col-sm-9">
+                      <input type="hidden"  formControlName="id" [(ngModel)]="contacts.id" >
+                  </div>
+              </div>
+
+                <div class="form-group">
+                    <label for="firstName" class="col-sm-3 control-label">First Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" formControlName="firstName" [(ngModel)]="contacts.firstName" >
+                    </div>
+                </div>
+                  <div class="form-group">
+                    <label for="lastName" class="col-sm-3 control-label">Last Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" formControlName="lastName"  [(ngModel)]="contacts.lastName" >
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label for="email" class="col-sm-3 control-label">Email</label>
+                    <div class="col-sm-9">
+                        <input type="email" class="form-control" formControlName="email"  [(ngModel)]="contacts.email" >
+                    </div>
+                </div>
+                  <div class="form-group">
+                    <label for="mobileno" class="col-sm-3 control-label">Mobile Number</label>
+                    <div class="col-sm-9">
+                        <input type="text"  class="form-control" formControlName="mobileNumber" [(ngModel)]="contacts.mobileNumber">
+                        </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="Status" class="col-sm-3 control-label">Status: </label>
+                  <div class="col-sm-9">
+                  <select formControlName="status" [(ngModel)]="contacts.status"  class="form-control">
+                    <option value="InActive">InActive</option>
+                    <option value="Active">Active</option>
+                  </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                         <input type="submit" class="btn btn-primary btn-block" value="Submit" (click)="updateContact(form.value)">
+                    </div>
+                </div>
+        </form> 
+</div>
+      
+
+
+
+</ng-template>
+
+<!--for Delete POP-UP Contact Code here-->
+<ng-template #template1>
+  <div class="modal-body text-center">
+    <p>Are you sure to delete this contact?</p>
+    <button type="button" class="btn btn-default" (click)="confirmDelete()" >Yes</button>
+    <button type="button" class="btn btn-primary" (click)="closeModel()" >No</button>
+  </div>
+</ng-template>
+

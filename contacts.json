@@ -1,0 +1,44 @@
+{
+  "contacts": [
+    {
+      "id": 1,
+      "firstName": "Anand123",
+      "lastName": "Khanapure",
+      "email": "a@gmail.com",
+      "mobileNumber": "9879897988",
+      "status": "InActive"
+    },
+    {
+      "id": 2,
+      "firstName": "Manoj",
+      "lastName": "Bhamr5",
+      "email": "manojbhamre91@gmail.com",
+      "mobileNumber": "892545663",
+      "status": "Active"
+    },
+    {
+      "firstName": "Vishal",
+      "lastName": "Rathod",
+      "email": "v@gmail.com",
+      "mobileNumber": "8823388233",
+      "status": "Active",
+      "id": 4
+    },
+    {
+      "firstName": "Prasad",
+      "lastName": "Tiwari",
+      "email": "p@gmail.com",
+      "mobileNumber": "8823388233",
+      "status": "Active",
+      "id": 5
+    },
+    {
+      "firstName": "Reena",
+      "lastName": "Kharat",
+      "email": "rk@gmail.com",
+      "mobileNumber": "8899988999",
+      "status": "Active",
+      "id": 6
+    }
+  ]
+}
