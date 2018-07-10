@@ -1,6 +1,6 @@
 # Assignment
 
-I have developed Application as per given
+I have developed Application in angular 4.
 Functionality:
 
 - List contacts
@@ -11,7 +11,7 @@ Functionality:
 
 # Running the app.
 
-Clone Notifications on your machine and follow the steps:
+Clone assignment on your machine and follow the steps:
 git clone https://github.com/Anandkhanapure007/evolent-assignment.git
 
 Make sure you have node installed on your machine. If not follow the steps:
